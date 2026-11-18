@@ -1,20 +1,20 @@
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
-using ThingPilot.Core;
+using ThingsPilot.Core;
 
-namespace ThingPilot.Extension;
+namespace ThingsPilot.Extension;
 
-public sealed partial class ThingPilotProvider : CommandProvider
+public sealed partial class ThingsPilotProvider : CommandProvider
 {
     private readonly RoutineCache cache = new();
     private readonly RoutineCatalog catalog;
     private readonly RoutinePage page;
     private int disposed;
 
-    public ThingPilotProvider()
+    public ThingsPilotProvider()
     {
-        Id = "ThingPilot";
-        DisplayName = "ThingPilot";
+        Id = "ThingsPilot";
+        DisplayName = "ThingsPilot";
         Icon = new IconInfo("\uE945");
         Frozen = false;
         var cached = cache.Load();
@@ -28,13 +28,13 @@ public sealed partial class ThingPilotProvider : CommandProvider
     private void OnChanged() => RaiseItemsChanged();
 
     public override ICommandItem[] TopLevelCommands() => [
-        new CommandItem(page) { Title = "ThingPilot", Subtitle = catalog.Status },
+        new CommandItem(page) { Title = "ThingsPilot", Subtitle = catalog.Status },
         ..catalog.Routines.Select(routine => new CommandItem(new RunRoutineCommand(catalog, routine))
         { Title = routine.Name, Subtitle = routine.Context })
     ];
 
     public override ICommand? GetCommand(string id) => id == page.Id ? page : catalog.Routines
-        .Where(routine => "ThingPilot.Routine." + routine.Id == id)
+        .Where(routine => "ThingsPilot.Routine." + routine.Id == id)
         .Select(routine => (ICommand)new RunRoutineCommand(catalog, routine)).FirstOrDefault();
 
     public override void Dispose()
@@ -56,7 +56,7 @@ internal sealed partial class RunRoutineCommand : InvokableCommand
     {
         this.catalog = catalog;
         this.routine = routine;
-        Id = "ThingPilot.Routine." + routine.Id;
+        Id = "ThingsPilot.Routine." + routine.Id;
         Name = "Run routine";
         Icon = new IconInfo("\uE768");
     }
@@ -72,7 +72,7 @@ internal sealed partial class RunRoutineCommand : InvokableCommand
     private async Task RunAsync()
     {
         try { UiFeedback.Show(await catalog.RunAsync(routine)); }
-        catch (Exception) { UiFeedback.Show("ThingPilot could not invoke Play. Open SmartThings and check the routine before retrying."); }
+        catch (Exception) { UiFeedback.Show("ThingsPilot could not invoke Play. Open SmartThings and check the routine before retrying."); }
         finally { Name = "Run routine"; Volatile.Write(ref busy, 0); }
     }
 }

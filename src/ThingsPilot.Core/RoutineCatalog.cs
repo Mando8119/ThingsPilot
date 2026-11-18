@@ -1,4 +1,4 @@
-namespace ThingPilot.Core;
+namespace ThingsPilot.Core;
 
 /// <summary>Keeps searches in memory and serializes interaction with the SmartThings UI.</summary>
 public sealed class RoutineCatalog(IRoutineBridge bridge, IEnumerable<Routine>? cached = null)

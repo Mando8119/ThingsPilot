@@ -1,4 +1,4 @@
-namespace ThingPilot.Extension;
+namespace ThingsPilot.Extension;
 
 internal static class Program
 {
@@ -17,7 +17,7 @@ internal static class Program
         {
             var target = routines.Single(routine => routine.Name.Equals(args[1], StringComparison.Ordinal));
             await bridge.TriggerAsync(target);
-            Console.WriteLine($"LIVE TEST: sent one Play activation for {target.Name}. Verify effects independently; completion is not confirmed by ThingPilot.");
+            Console.WriteLine($"LIVE TEST: sent one Play activation for {target.Name}. Verify effects independently; completion is not confirmed by ThingsPilot.");
             return 0;
         }
         Console.WriteLine($"PASS: SmartThings exposed {routines.Length} manually run routines in {routines[0].LocationName}; verified each Play lookup and keyboard eligibility without activating it. No routine was triggered.");

@@ -19,7 +19,7 @@ jobs:
           & "$($preview.FullName)/Install.ps1" -CheckOnly
       - uses: actions/upload-artifact@v4
         with:
-          name: thingpilot-preview
+          name: thingspilot-preview
           retention-days: 7
           path: |
             artifacts/*.zip

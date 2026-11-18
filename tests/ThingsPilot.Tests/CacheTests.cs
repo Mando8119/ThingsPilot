@@ -1,14 +1,14 @@
-using ThingPilot.Core;
-using ThingPilot.Extension;
+using ThingsPilot.Core;
+using ThingsPilot.Extension;
 
-namespace ThingPilot.Tests;
+namespace ThingsPilot.Tests;
 
 public sealed class CacheTests
 {
     [Fact]
     public void CorruptOrIncompleteCacheCannotProduceExecutableCommands()
     {
-        var path = Path.Combine(Path.GetTempPath(), "thingpilot-cache-" + Guid.NewGuid() + ".json");
+        var path = Path.Combine(Path.GetTempPath(), "thingspilot-cache-" + Guid.NewGuid() + ".json");
         try
         {
             var cache = new RoutineCache(path);

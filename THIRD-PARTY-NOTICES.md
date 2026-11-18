@@ -1,6 +1,6 @@
-﻿# Third-party notices
+# Third-party notices
 
-ThingPilot is MIT licensed. The COM hosting pattern is adapted from the Microsoft PowerToys Command Palette extension template:
+ThingsPilot is MIT licensed. The COM hosting pattern is adapted from the Microsoft PowerToys Command Palette extension template:
 
 https://github.com/microsoft/PowerToys/tree/main/src/modules/cmdpal/ExtensionTemplate
 

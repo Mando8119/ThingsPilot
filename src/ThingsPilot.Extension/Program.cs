@@ -4,7 +4,7 @@ using Microsoft.CommandPalette.Extensions;
 using Shmuelie.WinRTServer;
 using Shmuelie.WinRTServer.CsWinRT;
 
-namespace ThingPilot.Extension;
+namespace ThingsPilot.Extension;
 
 internal static class Program
 {
@@ -14,14 +14,14 @@ internal static class Program
         if (args.FirstOrDefault() != "-RegisterProcessAsComServer")
         {
             System.Windows.MessageBox.Show(
-                "ThingPilot is a PowerToys Command Palette extension.\n\nOpen Command Palette with Win+Alt+Space, select ThingPilot → Open routines, then Refresh from SmartThings.\n\nIf it is missing, reload extensions in Command Palette Settings → Extensions → Installed → More options.",
-                "Open ThingPilot in Command Palette", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                "ThingsPilot is a PowerToys Command Palette extension.\n\nOpen Command Palette with Win+Alt+Space, select ThingsPilot → Open routines, then Refresh from SmartThings.\n\nIf it is missing, reload extensions in Command Palette Settings → Extensions → Installed → More options.",
+                "Open ThingsPilot in Command Palette", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             return;
         }
         using var disposed = new ManualResetEvent(false);
-        var extension = new ThingPilotExtension(disposed);
+        var extension = new ThingsPilotExtension(disposed);
         var server = new ComServer();
-        server.RegisterClass<ThingPilotExtension, IExtension>(() => extension);
+        server.RegisterClass<ThingsPilotExtension, IExtension>(() => extension);
         server.Start();
         disposed.WaitOne();
         server.Stop();

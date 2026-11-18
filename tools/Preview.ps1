@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([string]$Version = '0.1.2.0', [string]$Dotnet = '', [switch]$SkipBuild)
+param([string]$Version = '0.1.3.0', [string]$Dotnet = '', [switch]$SkipBuild)
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path $PSScriptRoot -Parent
 if (!$SkipBuild) { & "$PSScriptRoot/Bundle.ps1" -Version $Version -Dotnet $Dotnet }
@@ -15,7 +15,7 @@ foreach ($architecture in @('x64', 'arm64')) {
     Get-ChildItem -LiteralPath $build.stage -Force | Copy-Item -Destination $payload -Recurse -Force
     Get-ChildItem -LiteralPath (Join-Path $repoRoot 'packaging/preview') -File | Copy-Item -Destination $staging
     Copy-Item -LiteralPath (Join-Path $repoRoot 'LICENSE') -Destination $staging
-    $zip = Join-Path $artifacts "ThingPilot-$Version-$architecture.zip"
+    $zip = Join-Path $artifacts "ThingsPilot-$Version-$architecture.zip"
     if (Test-Path -LiteralPath $zip) { throw "Release ZIP already exists; choose a new version or explicitly archive it before rebuilding: $zip" }
     [IO.Compression.ZipFile]::CreateFromDirectory($staging, $zip, [IO.Compression.CompressionLevel]::Optimal, $false)
     $zips += $zip

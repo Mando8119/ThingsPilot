@@ -1,9 +1,9 @@
 # Complete identifiers and URLs only after signed packages have a stable public release.
-PackageIdentifier: Publisher.ThingPilot
-PackageVersion: 0.1.2
+PackageIdentifier: Publisher.ThingsPilot
+PackageVersion: 0.1.3
 PackageLocale: en-US
 Publisher: REPLACE_PUBLISHER
-PackageName: ThingPilot
+PackageName: ThingsPilot
 License: MIT
 ShortDescription: Search and launch existing SmartThings manually run routines.
 Tags:

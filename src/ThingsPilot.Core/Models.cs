@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ThingPilot.Core;
+namespace ThingsPilot.Core;
 
 public sealed record Routine(string Id, string Name, string LocationName)
 {

@@ -1,13 +1,13 @@
 using System.Text.Json;
-using ThingPilot.Core;
+using ThingsPilot.Core;
 
-namespace ThingPilot.Extension;
+namespace ThingsPilot.Extension;
 
 internal sealed class RoutineCache(string? cachePath = null)
 {
     private static readonly JsonSerializerOptions Options = new(JsonSerializerDefaults.Web);
     private readonly string path = cachePath ?? Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ThingPilot", "routines.json");
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ThingsPilot", "routines.json");
 
     public Routine[] Load()
     {

@@ -5,8 +5,8 @@
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../../src/ThingPilot.Core/ThingPilot.Core.csproj" />
-    <Compile Include="../../src/ThingPilot.Extension/RoutineCache.cs" Link="RoutineCache.cs" />
+    <ProjectReference Include="../../src/ThingsPilot.Core/ThingsPilot.Core.csproj" />
+    <Compile Include="../../src/ThingsPilot.Extension/RoutineCache.cs" Link="RoutineCache.cs" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4" PrivateAssets="all" />

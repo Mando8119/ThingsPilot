@@ -11,7 +11,7 @@ The first public release uses unpacked, self-contained developer-registration ZI
 ./tools/Preview.ps1 -SkipBuild
 ```
 
-Extract each ZIP to a fresh directory and run its installer with `-CheckOnly` to check payload completeness. On a test Windows account, run Install.cmd, verify Command Palette discovery and demo execution, then test update and uninstall. Publish the two ZIPs and preview checksums as a GitHub prerelease with the [release notes](release-notes-0.1.2.md). Explicitly state that Developer Mode is required and ARM64 has not been hardware-tested. Do not label it a signed or Store-certified release.
+Extract each ZIP to a fresh directory and run its installer with `-CheckOnly` to check payload completeness. On a test Windows account, run Install.cmd, verify Command Palette discovery and demo execution, then test update and uninstall. Publish the two ZIPs and preview checksums as a GitHub prerelease with the [release notes](release-notes-0.1.3.md). Explicitly state that Developer Mode is required and ARM64 has not been hardware-tested. Do not label it a signed or Store-certified release.
 
 The installer copies the application into a per-user version directory and registers its manifest. It does not import certificates, modify Developer Mode or machine execution policy, require an SDK, contact a download server, or run a routine. The batch launcher selects an execution-policy override only for its PowerShell child process. Users can inspect all installer source in this repository before running it.
 
@@ -25,16 +25,16 @@ Run the packaging script for both architectures:
 ./tools/Package.ps1 -Architecture x64 `
   -IdentityName 'YOUR_PACKAGE_IDENTITY' `
   -Publisher 'CN=YOUR_EXACT_PUBLISHER' `
-  -PublisherDisplayName 'YOUR_PUBLISHER_NAME' -Version '0.1.2.0'
+  -PublisherDisplayName 'YOUR_PUBLISHER_NAME' -Version '0.1.3.0'
 ./tools/Package.ps1 -Architecture arm64 `
   -IdentityName 'YOUR_PACKAGE_IDENTITY' `
   -Publisher 'CN=YOUR_EXACT_PUBLISHER' `
-  -PublisherDisplayName 'YOUR_PUBLISHER_NAME' -Version '0.1.2.0'
+  -PublisherDisplayName 'YOUR_PUBLISHER_NAME' -Version '0.1.3.0'
 ```
 
 Complete the templates under `packaging/winget` with stable HTTPS release URLs, signed-package hashes, the package family name, and real identifiers. Run `winget validate` and test the resulting installation. Keep the `windows-commandpalette-extension` tag.
 
-For an architecture bundle and SHA-256 checksums, run [Bundle.ps1](../tools/Bundle.ps1) with the same identity parameters. It builds both packages and produces `ThingPilot-0.1.2.0.msixbundle` and `SHA256SUMS.txt`. To sign through an existing certificate with its private key in the current user's certificate store, pass `-CertificateThumbprint YOUR_THUMBPRINT`; the script timestamps and verifies the signatures. It does not generate or install certificates. Store uploads can use an unsigned bundle with the Partner Center identity; public sideloading requires trusted signing.
+For an architecture bundle and SHA-256 checksums, run [Bundle.ps1](../tools/Bundle.ps1) with the same identity parameters. It builds both packages and produces `ThingsPilot-0.1.3.0.msixbundle` and `SHA256SUMS.txt`. To sign through an existing certificate with its private key in the current user's certificate store, pass `-CertificateThumbprint YOUR_THUMBPRINT`; the script timestamps and verifies the signatures. It does not generate or install certificates. Store uploads can use an unsigned bundle with the Partner Center identity; public sideloading requires trusted signing.
 
 ## Microsoft Store
 
@@ -44,17 +44,17 @@ Store acceptance is not guaranteed. Current [Store policy](https://learn.microso
 
 - review Samsung's current app terms for third-party desktop automation;
 - use the implemented **Try demo routines** mode and supply the [certification notes and listing draft](store-listing.md); a real account is still needed to verify live SmartThings compatibility;
-- explain that ThingPilot uses the documented Windows accessibility API and does not access Samsung credentials or APIs;
+- explain that ThingsPilot uses the documented Windows accessibility API and does not access Samsung credentials or APIs;
 - run WACK and clean-machine tests; and
 - provide support and privacy URLs.
 
-Use original ThingPilot artwork and state that the project is independent. Do not use Samsung or Microsoft logos or imply endorsement.
+Use original ThingsPilot artwork and state that the project is independent. Do not use Samsung or Microsoft logos or imply endorsement.
 
 ## Command Palette Extensions Gallery
 
 The Gallery is a curated directory and does not host packages. Microsoft's current [submission guide](https://github.com/microsoft/CmdPal-Extensions/blob/main/docs/CONTRIBUTING.md) requires the extension to be published first through WinGet or the Microsoft Store.
 
-Create `extensions/<author>/thingpilot/` from `packaging/gallery`, replace the author, URLs, extension ID, and install source, then set `listed` to `true`. The ID must match the lowercase folder path. Submit the folder to `microsoft/CmdPal-Extensions`, complete the CLA, pass schema checks, and allow maintainer review.
+Create `extensions/<author>/thingspilot/` from `packaging/gallery`, replace the author, URLs, extension ID, and install source, then set `listed` to `true`. The ID must match the lowercase folder path. Submit the folder to `microsoft/CmdPal-Extensions`, complete the CLA, pass schema checks, and allow maintainer review.
 
 ## Release gate
 

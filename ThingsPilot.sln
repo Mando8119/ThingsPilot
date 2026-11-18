@@ -1,21 +1,21 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingPilot.Core", "src\ThingPilot.Core\ThingPilot.Core.csproj", "{ADDF140D-DC3F-4477-95E2-D2414D288D28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingsPilot.Core", "src\ThingsPilot.Core\ThingsPilot.Core.csproj", "{ADDF140D-DC3F-4477-95E2-D2414D288D28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingPilot.Extension", "src\ThingPilot.Extension\ThingPilot.Extension.csproj", "{BCE13E4B-F98B-4235-8619-26EC39356C78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingsPilot.Extension", "src\ThingsPilot.Extension\ThingsPilot.Extension.csproj", "{BCE13E4B-F98B-4235-8619-26EC39356C78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingPilot.Tests", "tests\ThingPilot.Tests\ThingPilot.Tests.csproj", "{2E302C13-49C4-4CE8-902F-9DAB89AAE547}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingsPilot.Tests", "tests\ThingsPilot.Tests\ThingsPilot.Tests.csproj", "{2E302C13-49C4-4CE8-902F-9DAB89AAE547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingPilot.SmokeHost", "tests\ThingPilot.SmokeHost\ThingPilot.SmokeHost.csproj", "{8F07EC42-0047-489E-839A-69E3BCCFA339}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingsPilot.SmokeHost", "tests\ThingsPilot.SmokeHost\ThingsPilot.SmokeHost.csproj", "{8F07EC42-0047-489E-839A-69E3BCCFA339}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingPilot.UiProbe", "tests\ThingPilot.UiProbe\ThingPilot.UiProbe.csproj", "{616BC9C3-6C06-4E36-9898-0B154C02873C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThingsPilot.UiProbe", "tests\ThingsPilot.UiProbe\ThingsPilot.UiProbe.csproj", "{616BC9C3-6C06-4E36-9898-0B154C02873C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

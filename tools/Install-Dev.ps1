@@ -11,9 +11,9 @@ if (!$StagingDirectory) { throw 'Run tools/Validate.ps1 to build the development
 $manifest = Join-Path $StagingDirectory 'AppxManifest.xml'
 if (!(Test-Path -LiteralPath $manifest)) { throw 'The staging directory must contain AppxManifest.xml.' }
 [xml]$identity = Get-Content -LiteralPath $manifest
-if ($identity.Package.Identity.Name -ne 'ThingPilot.Dev') { throw 'This helper only registers the ThingPilot.Dev development identity.' }
+if ($identity.Package.Identity.Name -ne 'ThingsPilot.Dev') { throw 'This helper only registers the ThingsPilot.Dev development identity.' }
 $developerMode = (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock' -ErrorAction SilentlyContinue).AllowDevelopmentWithoutDevLicense
 if ($developerMode -ne 1) { throw 'Enable Windows Developer Mode in Settings, then run this helper again.' }
 Add-AppxPackage -Register $manifest -ErrorAction Stop
-Get-AppxPackage ThingPilot.Dev | Select-Object Name, Version, PackageFamilyName, Status
-Write-Output 'Registered ThingPilot locally. Reload extensions in Command Palette settings. Keep the staging directory in place.'
+Get-AppxPackage ThingsPilot.Dev | Select-Object Name, Version, PackageFamilyName, Status
+Write-Output 'Registered ThingsPilot locally. Reload extensions in Command Palette settings. Keep the staging directory in place.'

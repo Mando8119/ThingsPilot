@@ -1,8 +1,8 @@
 using System.Runtime.InteropServices;
 using System.Windows.Automation;
-using ThingPilot.Core;
+using ThingsPilot.Core;
 
-namespace ThingPilot.Extension;
+namespace ThingsPilot.Extension;
 
 internal static class PlayActivation
 {

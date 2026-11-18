@@ -1,9 +1,9 @@
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Automation;
-using ThingPilot.Core;
+using ThingsPilot.Core;
 
-namespace ThingPilot.Extension;
+namespace ThingsPilot.Extension;
 
 /// <summary>Uses the documented Windows UI Automation client API against the installed SmartThings app.</summary>
 internal sealed partial class SmartThingsWindowsBridge : IRoutineBridge
@@ -48,7 +48,7 @@ internal sealed partial class SmartThingsWindowsBridge : IRoutineBridge
 
         var scenes = FindById(window, "ScenesGridView");
         if (scenes is null)
-            throw new BridgeFailure("ThingPilot could not find SmartThings' Manually run routines list. Update or reopen SmartThings and try again.", BridgeFailureKind.AppChanged);
+            throw new BridgeFailure("ThingsPilot could not find SmartThings' Manually run routines list. Update or reopen SmartThings and try again.", BridgeFailureKind.AppChanged);
 
         var listItems = ReadItems(scenes, cancellationToken);
         var names = listItems
@@ -70,7 +70,7 @@ internal sealed partial class SmartThingsWindowsBridge : IRoutineBridge
         OpenRoutinesPage(window, cancellationToken);
         var currentLocation = FindById(window, "LocationNameTextBlock")?.Current.Name?.Trim();
         if (!string.Equals(currentLocation, routine.LocationName, StringComparison.CurrentCultureIgnoreCase))
-            throw new BridgeFailure($"Switch SmartThings to {routine.LocationName}, refresh ThingPilot, then run {routine.Name}.", BridgeFailureKind.WrongLocation);
+            throw new BridgeFailure($"Switch SmartThings to {routine.LocationName}, refresh ThingsPilot, then run {routine.Name}.", BridgeFailureKind.WrongLocation);
 
         var scenes = FindById(window, "ScenesGridView");
         var matches = scenes is null ? [] : ReadItems(scenes, cancellationToken)
@@ -82,17 +82,17 @@ internal sealed partial class SmartThingsWindowsBridge : IRoutineBridge
             ((VirtualizedItemPattern)virtualPattern).Realize();
         var play = item is null ? null : FindById(item, "ActionButton");
         if (play is null)
-            throw new BridgeFailure($"{routine.Name} is no longer available in {routine.LocationName}. Refresh ThingPilot.", BridgeFailureKind.RoutineUnavailable);
+            throw new BridgeFailure($"{routine.Name} is no longer available in {routine.LocationName}. Refresh ThingsPilot.", BridgeFailureKind.RoutineUnavailable);
         if (!play.Current.IsEnabled)
             throw new BridgeFailure("SmartThings has disabled this routine's Play button. Check the app and try again later.");
         if (play.Current.ControlType != ControlType.Button || !play.Current.IsKeyboardFocusable)
-            throw new BridgeFailure("SmartThings changed how its Play control works. Update ThingPilot before trying again.", BridgeFailureKind.AppChanged);
+            throw new BridgeFailure("SmartThings changed how its Play control works. Update ThingsPilot before trying again.", BridgeFailureKind.AppChanged);
 
         // Activate exactly once. Input dispatch does not confirm completion of routine actions.
         cancellationToken.ThrowIfCancellationRequested();
         // Recheck location immediately before invoking; never retry this operation.
         if (!string.Equals(FindById(window, "LocationNameTextBlock")?.Current.Name?.Trim(), routine.LocationName, StringComparison.Ordinal))
-            throw new BridgeFailure("The SmartThings location changed. Refresh ThingPilot before running this routine.", BridgeFailureKind.WrongLocation);
+            throw new BridgeFailure("The SmartThings location changed. Refresh ThingsPilot before running this routine.", BridgeFailureKind.WrongLocation);
         if (invokePlay) PlayActivation.Activate(window, play, cancellationToken);
     }
 
@@ -123,10 +123,10 @@ internal sealed partial class SmartThingsWindowsBridge : IRoutineBridge
         }
         catch (Exception error) when (error is InvalidOperationException or System.ComponentModel.Win32Exception)
         {
-            throw new BridgeFailure("Install Samsung SmartThings from Microsoft Store, sign in, then refresh ThingPilot.", BridgeFailureKind.NotInstalled);
+            throw new BridgeFailure("Install Samsung SmartThings from Microsoft Store, sign in, then refresh ThingsPilot.", BridgeFailureKind.NotInstalled);
         }
 
-        throw new BridgeFailure("SmartThings did not become ready. Finish signing in, close any dialog, then refresh ThingPilot.", BridgeFailureKind.NotSignedIn);
+        throw new BridgeFailure("SmartThings did not become ready. Finish signing in, close any dialog, then refresh ThingsPilot.", BridgeFailureKind.NotSignedIn);
     }
 
     internal static void LaunchApp()
@@ -150,9 +150,9 @@ internal sealed partial class SmartThingsWindowsBridge : IRoutineBridge
     private static void OpenRoutinesPage(AutomationElement window, CancellationToken cancellationToken)
     {
         var navigationItem = WaitFor(() => FindById(window, "RoutinesNavItem"), TimeSpan.FromSeconds(5), cancellationToken)
-            ?? throw new BridgeFailure("ThingPilot could not find the Routines navigation item. Finish SmartThings setup and try again.", BridgeFailureKind.NotSignedIn);
+            ?? throw new BridgeFailure("ThingsPilot could not find the Routines navigation item. Finish SmartThings setup and try again.", BridgeFailureKind.NotSignedIn);
         if (!navigationItem.TryGetCurrentPattern(SelectionItemPattern.Pattern, out var pattern) || pattern is not SelectionItemPattern selection)
-            throw new BridgeFailure("SmartThings changed its Routines navigation. Update ThingPilot before trying again.", BridgeFailureKind.AppChanged);
+            throw new BridgeFailure("SmartThings changed its Routines navigation. Update ThingsPilot before trying again.", BridgeFailureKind.AppChanged);
         selection.Select();
         // A selected category can hide routines. The app's first category is its built-in All category.
         var categories = FindById(window, "CategoryListView");

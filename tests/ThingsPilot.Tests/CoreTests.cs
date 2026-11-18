@@ -1,6 +1,6 @@
-using ThingPilot.Core;
+using ThingsPilot.Core;
 
-namespace ThingPilot.Tests;
+namespace ThingsPilot.Tests;
 
 public class CoreTests
 {

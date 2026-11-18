@@ -8,16 +8,16 @@ if (!$Dotnet) {
 }
 Push-Location $repoRoot
 try {
-    & $Dotnet test tests/ThingPilot.Tests -c Release
+    & $Dotnet test tests/ThingsPilot.Tests -c Release
     if ($LASTEXITCODE -ne 0) { throw 'Tests failed.' }
     if ($ProbeSmartThings) {
-        & $Dotnet run --project tests/ThingPilot.UiProbe -c Release
+        & $Dotnet run --project tests/ThingsPilot.UiProbe -c Release
         if ($LASTEXITCODE -ne 0) { throw 'Live discovery probe failed.' }
     }
     if (!$SkipPackaging) {
         & "$PSScriptRoot/Bundle.ps1" -Dotnet $Dotnet
         $build = Get-Content artifacts/latest-x64.json -Raw | ConvertFrom-Json
-        & $Dotnet run --project tests/ThingPilot.SmokeHost -c Release -- "$($build.stage)/ThingPilot.exe"
+        & $Dotnet run --project tests/ThingsPilot.SmokeHost -c Release -- "$($build.stage)/ThingsPilot.exe"
         if ($LASTEXITCODE -ne 0) { throw 'Out-of-process COM smoke failed.' }
     }
     Get-Content packaging/gallery/extension.template.json -Raw | ConvertFrom-Json | Out-Null

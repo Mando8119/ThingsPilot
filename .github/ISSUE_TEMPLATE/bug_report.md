@@ -6,10 +6,10 @@ labels: bug
 ---
 
 **What happened?**
-Describe the steps and the exact message shown. Does it happen while installing, opening ThingPilot, refreshing, or running a routine?
+Describe the steps and the exact message shown. Does it happen while installing, opening ThingsPilot, refreshing, or running a routine?
 
 **Versions**
-- ThingPilot:
+- ThingsPilot:
 - Windows version and x64/ARM64:
 - PowerToys / Command Palette:
 - SmartThings Windows app version and language:

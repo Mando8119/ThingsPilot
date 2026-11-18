@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/CmdPal-Extensions/main/.github/schemas/extension.schema.json",
-  "id": "publisher.thingpilot",
-  "title": "ThingPilot",
+  "id": "publisher.thingspilot",
+  "title": "ThingsPilot",
   "shortDescription": "Search and launch your existing SmartThings manually run routines.",
-  "description": "Search and launch existing SmartThings Manually run routines through the signed-in SmartThings Windows app. ThingPilot runs locally through Windows UI Automation and requires no SmartThings developer account, API plan, token, or cloud service. It ignores automatic routines. Play invocation does not confirm that every routine action finished. Independent community project; not affiliated with Samsung or Microsoft.",
+  "description": "Search and launch existing SmartThings Manually run routines through the signed-in SmartThings Windows app. ThingsPilot runs locally through Windows UI Automation and requires no SmartThings developer account, API plan, token, or cloud service. It ignores automatic routines. Play invocation does not confirm that every routine action finished. Independent community project; not affiliated with Samsung or Microsoft.",
   "author": { "name": "REPLACE_PUBLISHER", "url": "https://github.com/Mando8119" },
   "homepage": "https://github.com/Mando8119/ThingsPilot",
   "icon": "icon.png",
   "tags": ["smartthings", "routines", "scenes", "smart-home"],
   "categories": ["productivity", "utilities-and-tools"],
-  "installSources": [{ "type": "winget", "id": "Publisher.ThingPilot" }],
+  "installSources": [{ "type": "winget", "id": "Publisher.ThingsPilot" }],
   "listed": false
 }

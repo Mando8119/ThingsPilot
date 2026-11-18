@@ -1,14 +1,14 @@
-THINGPILOT — FREE COMMUNITY PREVIEW
+THINGSPILOT — FREE COMMUNITY PREVIEW
 
 1. Install Microsoft PowerToys with Command Palette enabled, plus Samsung
    SmartThings for Windows. Sign in to SmartThings.
 2. Extract this entire ZIP, then double-click Install.cmd.
 3. If asked, enable Windows Developer Mode and run Install.cmd again.
-4. Open Command Palette with Win+Alt+Space. Search ThingPilot and choose
+4. Open Command Palette with Win+Alt+Space. Search ThingsPilot and choose
    Open routines, then Refresh from SmartThings.
 5. Search a manual routine by name and press Enter once to run it.
 
-If ThingPilot is missing, open Command Palette Settings > Extensions >
+If ThingsPilot is missing, open Command Palette Settings > Extensions >
 Installed > More options > Reload extensions.
 
 No Visual Studio, .NET SDK, API subscription, token, administrator terminal,
@@ -24,11 +24,11 @@ registration; in that case this preview cannot be installed on that PC.
 The installer copies the app to your LocalAppData folder, so you may delete
 this extracted folder after installation. Do not delete the installed copy.
 Run Install.cmd from a newer release to update. Run Uninstall.cmd to remove.
-After uninstall, %LOCALAPPDATA%\ThingPilot may be deleted to reclaim old
+After uninstall, %LOCALAPPDATA%\ThingsPilot may be deleted to reclaim old
 version files and remove the routine-name cache.
 
 Manual routines only. SmartThings may appear briefly, and changing its
-location requires refreshing ThingPilot. A SmartThings update can break
+location requires refreshing ThingsPilot. A SmartThings update can break
 compatibility. Feedback confirms input was sent, not that all devices finished.
 
 Independent project; not affiliated with Samsung or Microsoft. MIT license.

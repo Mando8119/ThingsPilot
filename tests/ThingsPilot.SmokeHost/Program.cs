@@ -12,7 +12,7 @@ internal static class SmokeHost
     [MTAThread]
     public static async Task<int> Main(string[] args)
     {
-        if (args.Length != 1) throw new ArgumentException("Pass the published ThingPilot.exe path.");
+        if (args.Length != 1) throw new ArgumentException("Pass the published ThingsPilot.exe path.");
         using var server = Process.Start(new ProcessStartInfo(Path.GetFullPath(args[0]), "-RegisterProcessAsComServer")
         {
             UseShellExecute = false,
@@ -31,11 +31,11 @@ internal static class SmokeHost
             var provider = (ICommandProvider)extension.GetProvider(ProviderType.Commands);
             var host = new FeedbackHost();
             provider.InitializeWithHost(host);
-            if (provider.DisplayName != "ThingPilot") throw new Exception("Wrong provider name.");
+            if (provider.DisplayName != "ThingsPilot") throw new Exception("Wrong provider name.");
             var commands = provider.TopLevelCommands();
-            if (commands.Length < 1 || commands[0].Title != "ThingPilot") throw new Exception("No launch command.");
+            if (commands.Length < 1 || commands[0].Title != "ThingsPilot") throw new Exception("No launch command.");
             if (provider.GetCommand(commands[0].Command.Id) is not IListPage)
-                throw new Exception("Saved ThingPilot page command cannot be resolved.");
+                throw new Exception("Saved ThingsPilot page command cannot be resolved.");
             var page = (IListPage)commands[0].Command;
             var items = page.GetItems();
             if (!items.Any(item => item.Title == "Refresh from SmartThings")) throw new Exception("Refresh command missing.");

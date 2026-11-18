@@ -1,9 +1,9 @@
 [CmdletBinding()]
 param(
-    [string]$IdentityName = 'ThingPilot.Dev',
-    [string]$Publisher = 'CN=ThingPilot Development',
-    [string]$PublisherDisplayName = 'ThingPilot Development',
-    [ValidatePattern('^\d+\.\d+\.\d+\.\d+$')][string]$Version = '0.1.2.0',
+    [string]$IdentityName = 'ThingsPilot.Dev',
+    [string]$Publisher = 'CN=ThingsPilot Development',
+    [string]$PublisherDisplayName = 'ThingsPilot Development',
+    [ValidatePattern('^\d+\.\d+\.\d+\.\d+$')][string]$Version = '0.1.3.0',
     [string]$Dotnet = '',
     [string]$CertificateThumbprint = '',
     [string]$TimestampUrl = 'http://timestamp.digicert.com'
@@ -21,9 +21,9 @@ foreach ($architecture in @('x64', 'arm64')) {
 $artifacts = Join-Path $repoRoot 'artifacts'
 $bundleInput = Join-Path $artifacts ('bundle-input-' + [Guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $bundleInput | Out-Null
-$packages = @('x64', 'arm64') | ForEach-Object { Join-Path $artifacts "ThingPilot-$Version-$_.msix" }
+$packages = @('x64', 'arm64') | ForEach-Object { Join-Path $artifacts "ThingsPilot-$Version-$_.msix" }
 foreach ($package in $packages) { Copy-Item -LiteralPath $package -Destination $bundleInput }
-$bundle = Join-Path $artifacts "ThingPilot-$Version.msixbundle"
+$bundle = Join-Path $artifacts "ThingsPilot-$Version.msixbundle"
 & $makeAppx bundle /d $bundleInput /p $bundle /bv $Version /o
 if ($LASTEXITCODE -ne 0) { throw 'Bundle validation failed.' }
 if ($CertificateThumbprint) {

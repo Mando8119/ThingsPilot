@@ -1,9 +1,9 @@
-"""Rebuild original geometric ThingPilot package/gallery artwork (requires Pillow)."""
+"""Rebuild original geometric ThingsPilot package/gallery artwork (requires Pillow)."""
 from pathlib import Path
 from PIL import Image, ImageDraw
 
 root = Path(__file__).resolve().parents[1]
-assets = root / "src/ThingPilot.Extension/Assets"
+assets = root / "src/ThingsPilot.Extension/Assets"
 assets.mkdir(parents=True, exist_ok=True)
 
 def icon(size):

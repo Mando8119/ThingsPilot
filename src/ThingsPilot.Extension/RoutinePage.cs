@@ -1,8 +1,8 @@
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
-using ThingPilot.Core;
+using ThingsPilot.Core;
 
-namespace ThingPilot.Extension;
+namespace ThingsPilot.Extension;
 
 internal sealed partial class RoutinePage : DynamicListPage, IDisposable
 {
@@ -15,8 +15,8 @@ internal sealed partial class RoutinePage : DynamicListPage, IDisposable
         this.catalog = catalog;
         this.demo = demo;
         if (!demo) demoPage = new RoutinePage(new RoutineCatalog(new DemoRoutineBridge(), DemoRoutineBridge.Samples), true);
-        Id = demo ? "ThingPilot.Demo" : "ThingPilot.Routines";
-        Title = demo ? "ThingPilot demo — no devices controlled" : "ThingPilot";
+        Id = demo ? "ThingsPilot.Demo" : "ThingsPilot.Routines";
+        Title = demo ? "ThingsPilot demo — no devices controlled" : "ThingsPilot";
         Name = "Open routines";
         Icon = new IconInfo("\uE945");
         PlaceholderText = "Search routines or locations";
@@ -52,13 +52,13 @@ internal sealed partial class RoutinePage : DynamicListPage, IDisposable
             new ListItem(new RefreshCommand(catalog)) {
                 Title = "Refresh from SmartThings",
                 Subtitle = demo ? "Demo only: reload sample routines" : catalog.Status,
-                Section = "ThingPilot"
+                Section = "ThingsPilot"
             },
             ..(!demo ? new IListItem[] { new ListItem(new OpenSmartThingsCommand()) {
                 Title = "Open SmartThings",
-                Subtitle = "Sign in or switch location before refreshing ThingPilot",
-                Section = "ThingPilot"
-            }, new ListItem(demoPage!) { Title = "Try demo routines", Subtitle = "Preview search and simulated execution without a Samsung account", Section = "ThingPilot" } } : [])
+                Subtitle = "Sign in or switch location before refreshing ThingsPilot",
+                Section = "ThingsPilot"
+            }, new ListItem(demoPage!) { Title = "Try demo routines", Subtitle = "Preview search and simulated execution without a Samsung account", Section = "ThingsPilot" } } : [])
         ];
     }
 
@@ -74,7 +74,7 @@ internal sealed partial class RefreshCommand : InvokableCommand
     {
         this.catalog = catalog;
         Name = "Refresh routines";
-        Id = "ThingPilot.Refresh";
+        Id = "ThingsPilot.Refresh";
     }
 
     public override ICommandResult Invoke()
@@ -88,7 +88,7 @@ internal sealed partial class RefreshCommand : InvokableCommand
     private async Task RefreshAsync()
     {
         try { await catalog.RefreshAsync(true); UiFeedback.Show(catalog.Status); }
-        catch (Exception) { UiFeedback.Show("ThingPilot could not read SmartThings. Open the app and try again."); }
+        catch (Exception) { UiFeedback.Show("ThingsPilot could not read SmartThings. Open the app and try again."); }
         finally { Name = "Refresh routines"; Volatile.Write(ref busy, 0); }
     }
 }
