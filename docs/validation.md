@@ -14,6 +14,7 @@ Validated on Windows x64 on 2026-11-17 against SmartThings for Windows `1.26391.
 - The default read-only probe validates the real Play lookup and keyboard eligibility for all three routines without activating the controls. An explicit `--run "Study"` mode is available for authorized live tests; the validation script never uses it.
 - Packaging produces self-contained x64 and ARM64 MSIX packages and a combined MSIX bundle with MakeAppx validation and SHA-256 checksums.
 - The Gallery template passed the current official JSON schema; its original icon is below 100 KB.
+- Both public preview ZIPs were extracted and their payload identities and installer contents checked. x64 per-user installation was tested, including same-version registration repair and verifying that Windows points to the persistent LocalAppData copy. The ARM64 installer correctly rejects this x64 test PC. Hosted CI was unavailable for the initial public preview; local validation results are not a claim of a successful GitHub Actions run.
 - The development package registered successfully with Windows (status Ok) and was discovered by the installed Command Palette. Its page rendered real manual routine names with location context. Live testing exposed that Samsung's InvokePattern only focused Play; verified keyboard activation replaced it. App preparation now handles minimized UWP windows and waits for the Routines navigation to be ready before reading controls.
 
 ## Commands

@@ -31,4 +31,6 @@ After installation you may delete the extracted folder. Run Install.cmd from a n
 
 Validated with ten tests, out-of-process COM activation and demo feedback, read-only live routine discovery, and a live Study activation confirmed by the user. x64 and ARM64 packages passed MakeAppx validation. ARM64 is cross-built and still needs testing on actual ARM hardware. The verified SmartThings baseline is English Windows app 1.26391.0.0.
 
+The initial release assets were built and validated locally. GitHub-hosted CI was unavailable for this release and did not execute the workflow.
+
 Use PREVIEW-SHA256SUMS.txt to verify download hashes. Source is MIT licensed. Independent community project, not affiliated with Samsung or Microsoft.
