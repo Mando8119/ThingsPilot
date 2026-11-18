@@ -1,0 +1,6 @@
+{
+  "profiles": {
+    "ThingPilot (Package)": { "commandName": "MsixPackage", "doNotLaunchApp": true },
+    "ThingPilot (Unpackaged)": { "commandName": "Project", "commandLineArgs": "-RegisterProcessAsComServer" }
+  }
+}

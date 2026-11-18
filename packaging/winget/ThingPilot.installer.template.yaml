@@ -1,0 +1,15 @@
+# Replace release URL, SHA256, publisher-derived family name, and identifiers.
+PackageIdentifier: Publisher.ThingPilot
+PackageVersion: 0.1.2
+InstallerType: msix
+MinimumOSVersion: 10.0.22000.0
+PackageFamilyName: REPLACE_WITH_SIGNED_PACKAGE_FAMILY_NAME
+Installers:
+  - Architecture: x64
+    InstallerUrl: https://example.com/ThingPilot-0.1.2.0-x64.msix
+    InstallerSha256: REPLACE_WITH_SHA256
+  - Architecture: arm64
+    InstallerUrl: https://example.com/ThingPilot-0.1.2.0-arm64.msix
+    InstallerSha256: REPLACE_WITH_SHA256
+ManifestType: installer
+ManifestVersion: 1.10.0
